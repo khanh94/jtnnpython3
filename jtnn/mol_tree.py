@@ -145,5 +145,5 @@ if __name__ == "__main__":
         if len(mol.nodes) > 1 and alert:
             sys.stderr.write('[WARNING]: %d-th molecule %s has a high tree-width.\n' % (i + 1, smiles))
     for x in cset:
-        print x
+        print(x)
 
