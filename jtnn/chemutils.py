@@ -340,10 +340,10 @@ if __name__ == "__main__":
         for s in sys.stdin:
             s = s.split()[0]
             tree = MolTree(s)
-            print '-------------------------------------------'
-            print s
+            print('-------------------------------------------')
+            print(s)
             for node in tree.nodes:
-                print node.smiles, [x.smiles for x in node.neighbors]
+                print(node.smiles, [x.smiles for x in node.neighbors])
 
     def decode_test():
         wrong = 0
@@ -365,9 +365,9 @@ if __name__ == "__main__":
 
             gold_smiles = Chem.MolToSmiles(Chem.MolFromSmiles(s))
             if gold_smiles != dec_smiles:
-                print gold_smiles, dec_smiles
+                print(gold_smiles, dec_smiles)
                 wrong += 1
-            print wrong, tot + 1
+            print(wrong, tot + 1)
 
     def enum_test():
         for s in sys.stdin:
@@ -377,9 +377,9 @@ if __name__ == "__main__":
             tree.assemble()
             for node in tree.nodes:
                 if node.label not in node.cands:
-                    print tree.smiles
-                    print node.smiles, [x.smiles for x in node.neighbors]
-                    print node.label, len(node.cands)
+                    print(tree.smiles)
+                    print(node.smiles, [x.smiles for x in node.neighbors])
+                    print(node.label, len(node.cands))
 
     def count():
         cnt,n = 0,0
