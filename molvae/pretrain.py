@@ -67,7 +67,7 @@ for epoch in range(MAX_EPOCH):
 
         model.zero_grad()
         loss, kl_div, wacc, tacc, sacc, dacc = model(batch, beta=0)
-        loss.backward()
+        loss.sum().backward()
         optimizer.step()
 
         word_acc += wacc
