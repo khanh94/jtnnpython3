@@ -14,7 +14,7 @@ MAX_NB = 10
 def onek_encoding_unk(x, allowable_set):
     if x not in allowable_set:
         x = allowable_set[-1]
-    return map(lambda s: x == s, allowable_set)
+    return list(map(lambda s: x == s, allowable_set))
 
 def atom_features(atom):
     return torch.Tensor(onek_encoding_unk(atom.GetSymbol(), ELEM_LIST) 
@@ -44,7 +44,7 @@ class JTMPN(nn.Module):
         total_atoms = 0
         scope = []
 
-        for e,vec in tree_mess.iteritems():
+        for e,vec in tree_mess.items():
             mess_dict[e] = len(all_mess)
             all_mess.append(vec)
 
