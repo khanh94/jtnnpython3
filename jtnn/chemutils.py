@@ -135,7 +135,7 @@ def tree_decomp(mol):
                     if edges[(c1,c2)] < len(inter):
                         edges[(c1,c2)] = len(inter) #cnei[i] < cnei[j] by construction
 
-    edges = [u + (MST_MAX_WEIGHT-v,) for u,v in edges.iteritems()]
+    edges = [u + (MST_MAX_WEIGHT-v,) for u,v in edges.items()]
     if len(edges) == 0:
         return cliques, edges
 
