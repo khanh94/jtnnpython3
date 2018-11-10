@@ -42,7 +42,7 @@ for param in model.parameters():
     else:
         nn.init.xavier_normal(param)
 
-model = model.cuda()
+model = model.cpu()
 print "Model #Params: %dK" % (sum([x.nelement() for x in model.parameters()]) / 1000,)
 
 optimizer = optim.Adam(model.parameters(), lr=1e-3)
@@ -67,7 +67,7 @@ for epoch in xrange(MAX_EPOCH):
 
         model.zero_grad()
         loss, kl_div, wacc, tacc, sacc, dacc, pacc = model(batch, beta=0)
-        loss.backward()
+        loss.sum().backward()
         optimizer.step()
 
         word_acc += wacc
