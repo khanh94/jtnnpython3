@@ -211,7 +211,7 @@ class JTPropVAE(nn.Module):
         cur_vec = create_var(mean.data, True)
 
         visited = []
-        for step in xrange(num_iter):
+        for step in range(num_iter):
             prop_val = self.propNN(cur_vec).squeeze()
             grad = torch.autograd.grad(prop_val, cur_vec)[0]
             cur_vec = cur_vec.data + lr * grad.data
@@ -325,7 +325,7 @@ class JTPropVAE(nn.Module):
             _,cand_idx = torch.sort(scores, descending=True)
 
         backup_mol = Chem.RWMol(cur_mol)
-        for i in xrange(cand_idx.numel()):
+        for i in range(cand_idx.numel()):
             cur_mol = Chem.RWMol(backup_mol)
             pred_amap = cand_amap[cand_idx[i].data[0]]
             new_global_amap = copy.deepcopy(global_amap)

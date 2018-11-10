@@ -49,8 +49,8 @@ z0 = z0.data.cpu().numpy()
 
 delta = 1
 nei_mols = []
-for dx in xrange(-6,7):
-    for dy in xrange(-6,7):
+for dx in range(-6,7):
+    for dy in range(-6,7):
         z = z0 + x * delta * dx + y * delta * dy
         tree_z, mol_z = torch.Tensor(z).unsqueeze(0).chunk(2, dim=1)
         tree_z, mol_z = create_var(tree_z), create_var(mol_z)
