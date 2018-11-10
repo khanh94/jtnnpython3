@@ -41,7 +41,7 @@ for param in model.parameters():
     else:
         nn.init.xavier_normal(param)
 
-model = model.cuda()
+#model = model.cuda()
 print("Model #Params: %dK" % (sum([x.nelement() for x in model.parameters()]) / 1000,))
 
 optimizer = optim.Adam(model.parameters(), lr=1e-3)
